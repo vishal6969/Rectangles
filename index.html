@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>Javascript Calculation</title>
+
+    </head>
+    <style>
+        .sm{
+            display: inline-block;
+            margin-bottom: -4px !important;
+            box-sizing: border-box;
+        }
+
+    </style>
+
+<body>
+
+<h2>Javascript Calculation</h2>
+
+<div>
+
+  <label for="blength">Enter Bigger Rectangle Length:</label><br>
+
+  <input type="text" id="blength" name="blength"><br>
+
+  <label for="bbreadth">Enter Bigger Rectangle Breadth:</label><br>
+
+  <input type="text" id="bbreadth" name="bbreadth"><br><br>
+
+  
+
+  <label for="slength">Enter Smaller Rectangle Length:</label><br>
+
+  <input type="text" id="slength" name="blength"><br>
+
+  <label for="sbreadth">Enter Smaller Rectangle Breadth:</label><br>
+
+  <input type="text" id="sbreadth" name="sbreadth"><br><br>
+
+  <button type="button" onClick="calculate()">Calculate</button>
+
+</div>
+
+<br/>
+
+<div id="resdiv">
+
+    
+
+</div>
+<div id="vis">
+</div>
+
+<script>
+
+function calculate(){
+
+//take values from respective input box and store into variables
+
+var L=parseInt(document.getElementById("blength").value);
+
+var B=parseInt(document.getElementById("bbreadth").value);
+
+var l=parseInt(document.getElementById("slength").value);
+
+var b=parseInt(document.getElementById("sbreadth").value);
+
+// If the dimension of the smaller
+
+    // squares is greater than the
+
+    // bigger one
+
+if (l>L||(b > B)){
+        console.log(l+" "+b);
+        document.getElementById("resdiv").innerHTML="<strong>The Dimension of squares is greater than Bigger One</strong>";
+        return false;
+    }
+
+     // Return the number of smaller
+
+        // rectangles possible
+
+    var res= Math.floor(L/l)*Math.floor(B/b);
+
+//putt the value in result div
+
+document.getElementById("resdiv").innerHTML="<strong>There are "+res+" squares(smaller rectangles) of dimension "+l+" × "+b+" can be Fit or Drawn inside a bigger rectangle of dimension "+L+" × "+B+"</strong>";
+
+var visual=document.getElementById("vis");
+visual.style.border="0.1px solid black";
+visual.style.height=(L*10)+"px";
+visual.style.width=(B*10)+"px";
+var ll=l*10+"px";
+var bb=b*10+"px";
+var s="";
+for(var i=0;i<res;i++){
+s=s+'<div class="sm" style="border:solid black 0.1px;height:'+ll+';width:'+bb+';"></div>';
+}
+visual.innerHTML=s;
+}
+</script>   
+
+</body>
+
+</html>
